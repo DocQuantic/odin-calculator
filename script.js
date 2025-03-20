@@ -1,7 +1,7 @@
 /** Variables **/
-let operatorA = 0;
-let operatorB = 0;
-const operands = [
+let operandA = 0;
+let operandB = 0;
+const operators = [
     {
         name: "addition",
         symbol: "+",
@@ -25,6 +25,9 @@ const operands = [
 ]
 
 /* operands.find(op => op.symbol==="+").function(1, 2) */
+function operate(operator, operand1, operand2){
+    return operators.find(op => op.symbol === operator).function(operand1, operand2);
+}
 
 /** Basic operations functions **/
 
