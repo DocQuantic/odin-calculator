@@ -42,12 +42,6 @@ body{
     justify-content: center;
     align-items: center;
     gap: 5px;
-    border: 1px solid red;
-    padding: 0;
-}
-
-#clear{
-    width: 100%;
 }
 
 .box-1{
@@ -72,13 +66,42 @@ body{
     flex-basis: 21%;
 }
 
+#clear{
+    width: 100%;
+    background-color: rgb(185, 185, 185);
+}
+
+#clear:hover{
+    background-color: rgb(155, 155, 155);
+}
+
+#clear:active{
+    background-color: rgb(207, 207, 207);
+}
+
 .operand{
     flex: 1 0 30%;
     background-color: rgb(131, 207, 218);
 }
 
+.operand:hover{
+    background-color: rgb(99, 156, 165);
+}
+
+.operand:active{
+    background-color: rgb(174, 222, 230);
+}
+
 .operator{
-    background-color: bisque;
+    background-color: rgb(223, 199, 170);
+}
+
+.operator:hover{
+    background-color: rgb(167, 147, 124);
+}
+
+.operator:active{
+    background-color: rgb(247, 236, 223);
 }
 
 button{
