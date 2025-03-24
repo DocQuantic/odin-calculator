@@ -77,6 +77,9 @@ clearBtn.addEventListener("click", (e) => {
 const operandBtns = document.querySelectorAll(".operand");
 for(button of operandBtns){
     button.addEventListener("click", (e) => {
+        if(operator === null){
+            operand1 = null;
+        }
         if(textToDisplay === null){
             textToDisplay = e.target.textContent;
         } else {
@@ -90,7 +93,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 for(button of operatorBtns){
     button.addEventListener("click", (e) => {
         if(getDisplay() !== ""){
-            if(operand1 === null && operand2 === null && operator === null){
+            if(operand1 === null && operator === null){
                 operand1 = parseFloat(textToDisplay);
                 operator = e.target.textContent;
                 textToDisplay = null;
@@ -100,7 +103,7 @@ for(button of operatorBtns){
                 setDisplay(operand1.toString());
                 textToDisplay = null;
                 operator = e.target.textContent;
-            } else if(operand1 !== null && operand2 === null && operator === null){
+            } else if(operand1 !== null && operator === null){
                 operator = e.target.textContent;
                 operand2 = parseFloat(getDisplay());
                 textToDisplay = null;
