@@ -80,6 +80,17 @@ clearBtn.addEventListener("click", (e) => {
     setDisplay(textToDisplay);
 })
 
+const delBtn = document.querySelector("#del");
+delBtn.addEventListener("click", () => {
+    if(textToDisplay !== null){
+        textToDisplay = textToDisplay.slice(0, -1);
+        if(textToDisplay === ""){
+            textToDisplay = null;
+        }
+        setDisplay(textToDisplay);
+    }
+})
+
 const operandBtns = document.querySelectorAll(".operand");
 for(button of operandBtns){
     button.addEventListener("click", (e) => {

@@ -75,11 +75,11 @@ body{
     background-color: rgb(185, 185, 185);
 }
 
-#clear:hover{
+.clr-back button:hover{
     background-color: rgb(155, 155, 155);
 }
 
-#clear:active{
+.clr-back button:active{
     background-color: rgb(207, 207, 207);
 }
 
