@@ -94,7 +94,7 @@ for(button of operatorBtns){
                 operand1 = parseFloat(textToDisplay);
                 operator = e.target.textContent;
                 textToDisplay = null;
-            } else if(operand1 !== null && operand2 === null && operator !== null){
+            } else if(operand1 !== null && operator !== null){
                 operand2 = parseFloat(getDisplay());
                 operand1 = operate(operator, operand1, operand2);
                 setDisplay(operand1.toString());
