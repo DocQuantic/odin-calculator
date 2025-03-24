@@ -192,10 +192,12 @@ equalBtn.addEventListener("click", equalPressed)
 
 document.addEventListener("keydown", (e) => {
     if("0123456789.".includes(e.key)){
-        operandPressed(e.key);
-        if(e.key === "."){
+        if(e.key === "." && !sepBtn.disabled){
             sepPressed();
+        } else if(e.key === "." && sepBtn.disabled){
+            return;
         }
+        operandPressed(e.key);        
     } else if("+*/-".includes(e.key)){
         textToDisplay === null ? minPressed() : operatorPressed(e.key);
     } else if(e.key === "Enter"){
