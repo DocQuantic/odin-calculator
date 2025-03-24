@@ -71,6 +71,9 @@ function divide(a, b){
 
 const clearBtn = document.querySelector("#clear");
 clearBtn.addEventListener("click", (e) => {
+    if(sepBtn.disabled){
+        toggleSep();
+    }
     textToDisplay = null;
     operand1 = null;
     operand2 = null;
