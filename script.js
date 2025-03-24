@@ -100,7 +100,7 @@ for(button of operandBtns){
 const operatorBtns = document.querySelectorAll(".operator");
 for(button of operatorBtns){
     button.addEventListener("click", (e) => {
-        if(getDisplay() !== ""){
+        if(textToDisplay !== null){
             if(operand1 === null && operator === null){
                 /*
                 *  If operand1 and operator are null, the calculation starts from the beginning
@@ -119,7 +119,9 @@ for(button of operatorBtns){
                 setDisplay(operand1.toString());
                 textToDisplay = null;
                 operator = e.target.textContent;
-            } else if(operand1 !== null && operator === null){
+            } 
+        } else {
+            if(operand1 !== null && operator === null){
                 /* 
                 *  If operand1 is not null and operator is null, it means that last calculation was performed 
                 *  by pressing equal button. In this case, operator and operand2 are set. But the calculation is not performed.
