@@ -97,10 +97,19 @@ for(button of operandBtns){
     })
 }
 
+const sepBtn = document.querySelector("#sep");
+function toggleSep(){
+    sepBtn.disabled = !sepBtn.disabled;
+}
+sepBtn.addEventListener("click", toggleSep);
+
 const operatorBtns = document.querySelectorAll(".operator");
 for(button of operatorBtns){
     button.addEventListener("click", (e) => {
         if(textToDisplay !== null){
+            if(sepBtn.disabled){
+                toggleSep();
+            }
             if(operand1 === null && operator === null){
                 /*
                 *  If operand1 and operator are null, the calculation starts from the beginning
@@ -137,6 +146,9 @@ for(button of operatorBtns){
 const equalBtn = document.querySelector("#eq");
 equalBtn.addEventListener("click", () => {
     if(operand1 !== null && operator !== null && textToDisplay !== null){
+        if(sepBtn.disabled){
+            toggleSep();
+        }
         operand2 = parseFloat(textToDisplay);
         operand1 = operate(operator, operand1, operand2);
         setDisplay(operand1.toString());
