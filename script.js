@@ -114,7 +114,7 @@ for(button of operatorBtns){
 
 const equalBtn = document.querySelector("#eq");
 equalBtn.addEventListener("click", () => {
-    if(operand1 !== null && operator !== null && getDisplay() !== ""){
+    if(operand1 !== null && operator !== null && textToDisplay !== null){
         operand2 = parseFloat(textToDisplay);
         operand1 = operate(operator, operand1, operand2);
         setDisplay(operand1.toString());
