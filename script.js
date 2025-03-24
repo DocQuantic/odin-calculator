@@ -33,7 +33,12 @@ function operate(operator, operand1, operand2){
 
 const display = document.querySelector(".display p");
 function setDisplay(text){
-    display.textContent = text;
+    if(text === null){
+        display.textContent = text;
+    } else {
+        const num = parseFloat(text);
+        display.textContent = (Math.round(num*100)/100).toString();
+    }
 }
 
 function getDisplay(){
@@ -66,7 +71,6 @@ clearBtn.addEventListener("click", (e) => {
     operand1 = null;
     operand2 = null;
     operator = null;
-    calculatorStatus = "operand1";
     setDisplay(textToDisplay);
 })
 
@@ -86,17 +90,20 @@ const operatorBtns = document.querySelectorAll(".operator");
 for(button of operatorBtns){
     button.addEventListener("click", (e) => {
         if(getDisplay() !== ""){
-            operator = e.target.textContent;
-            if(operand1 === null && operand2 === null){
+            if(operand1 === null && operand2 === null && operator === null){
                 operand1 = parseFloat(textToDisplay);
+                operator = e.target.textContent;
                 textToDisplay = null;
-            } else if(operand1 !== null && operand2 === null){
+            } else if(operand1 !== null && operand2 === null && operator !== null){
                 operand2 = parseFloat(getDisplay());
                 operand1 = operate(operator, operand1, operand2);
                 setDisplay(operand1.toString());
-                operator = e.target.textContent;
                 textToDisplay = null;
-                lastOperationSource = "operator";
+                operator = e.target.textContent;
+            } else if(operand1 !== null && operand2 === null && operator === null){
+                operator = e.target.textContent;
+                operand2 = parseFloat(getDisplay());
+                textToDisplay = null;
             }
         }
     })
@@ -111,6 +118,5 @@ equalBtn.addEventListener("click", () => {
         operand2 = null;
         operator = null;
         textToDisplay = null;
-        lastOperationSource = "equal";
     }
 })
