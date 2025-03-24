@@ -28,12 +28,16 @@ const operators = [
 ]
 
 function operate(operator, operand1, operand2){
-    return operators.find(op => op.symbol === operator).function(operand1, operand2);
+    if(operator === "/" && operand2 === 0){
+        return "/!\\ Division by 0 /!\\";
+    } else {
+        return operators.find(op => op.symbol === operator).function(operand1, operand2);
+    }
 }
 
 const display = document.querySelector(".display p");
 function setDisplay(text){
-    if(text === null){
+    if(text === null || typeof(text) === "string"){
         display.textContent = text;
     } else {
         const num = parseFloat(text);
