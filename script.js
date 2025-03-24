@@ -71,9 +71,8 @@ function divide(a, b){
 
 const clearBtn = document.querySelector("#clear");
 clearBtn.addEventListener("click", (e) => {
-    if(sepBtn.disabled){
-        toggleSep();
-    }
+    enableMin();
+    enableSep();
     textToDisplay = null;
     operand1 = null;
     operand2 = null;
@@ -91,28 +90,43 @@ for(button of operandBtns){
             */
             operand1 = null;
         }
+        /*
+        let text = null;
+        e.target.id === "minus" ? text = "-" : text = e.target.textContent;
+        */
+       const text = e.target.textContent;
+        
         if(textToDisplay === null){
-            textToDisplay = e.target.textContent;
+            textToDisplay = text;
         } else {
-            textToDisplay += e.target.textContent;
+            textToDisplay += text;
         }
         setDisplay(textToDisplay);
     })
 }
 
 const sepBtn = document.querySelector("#sep");
-function toggleSep(){
-    sepBtn.disabled = !sepBtn.disabled;
+function enableSep(){
+    sepBtn.disabled = false;
 }
-sepBtn.addEventListener("click", toggleSep);
+sepBtn.addEventListener("click", () => {sepBtn.disabled = true});
+
+const minusBtn = document.querySelector("#minus");
+function enableMin(){
+    minusBtn.disabled = false;
+}
+minusBtn.addEventListener("click", () => {
+    textToDisplay = "-" + textToDisplay;
+    setDisplay(textToDisplay);
+    minusBtn.disabled = true;
+});
 
 const operatorBtns = document.querySelectorAll(".operator");
 for(button of operatorBtns){
     button.addEventListener("click", (e) => {
         if(textToDisplay !== null){
-            if(sepBtn.disabled){
-                toggleSep();
-            }
+            enableSep();
+            enableMin();
             if(operand1 === null && operator === null){
                 /*
                 *  If operand1 and operator are null, the calculation starts from the beginning
@@ -149,9 +163,8 @@ for(button of operatorBtns){
 const equalBtn = document.querySelector("#eq");
 equalBtn.addEventListener("click", () => {
     if(operand1 !== null && operator !== null && textToDisplay !== null){
-        if(sepBtn.disabled){
-            toggleSep();
-        }
+        enableSep();
+        enableMin();
         operand2 = parseFloat(textToDisplay);
         operand1 = operate(operator, operand1, operand2);
         setDisplay(operand1.toString());
