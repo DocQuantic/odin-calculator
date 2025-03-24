@@ -66,8 +66,12 @@ body{
     flex-basis: 21%;
 }
 
-#clear{
-    width: 100%;
+.clr-back{
+    display: flex;
+    gap: 5px;
+}
+
+.clr-back button{
     background-color: rgb(185, 185, 185);
 }
 
